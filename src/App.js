@@ -4,7 +4,7 @@ import theme from "utils/theme";
 import GlobalStyles from "./index.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import { Navigation } from "components";
+import { Navigation, Wrapper } from "components";
 
 function App() {
   return (
@@ -16,14 +16,21 @@ function App() {
             { content: "Homepage", to: "/" },
             { content: "Budget", to: "/budget" },
           ]}
+          RightElement={
+            <div>
+              <button>pl</button>
+              <button>en</button>
+            </div>
+          }
         />
-
-        <Switch>
-          <Route exact path="/">
-            Homepage
-          </Route>
-          <Route path="/budget">Budget page</Route>
-        </Switch>
+        <Wrapper>
+          <Switch>
+            <Route exact path="/">
+              Homepage
+            </Route>
+            <Route path="/budget">Budget page</Route>
+          </Switch>
+        </Wrapper>
       </Router>
     </ThemeProvider>
   );
