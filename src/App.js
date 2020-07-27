@@ -2,15 +2,15 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "utils/theme";
 import GlobalStyles from "./index.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Navigation, Wrapper } from "components";
+import { Navigation, Wrapper, LoadingIndicator } from "components";
 
 function App() {
   const { t, i18n } = useTranslation();
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       <GlobalStyles />
       <Router>
         <Navigation
@@ -20,8 +20,8 @@ function App() {
           ]}
           RightElement={
             <div>
-              <button>pl</button>
-              <button>en</button>
+              <button onClick={() => i18n.changeLanguage("pl")}>pl</button>
+              <button onClick={() => i18n.changeLanguage("en")}>en</button>
             </div>
           }
         />
@@ -34,15 +34,17 @@ function App() {
           </Switch>
         </Wrapper>
       </Router>
-    </ThemeProvider>
+    </div>
   );
 }
 
 function RootApp() {
   return (
-    <React.Suspense fallback="Loading...">
-      <App />
-    </React.Suspense>
+    <ThemeProvider theme={theme}>
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <App />
+      </React.Suspense>
+    </ThemeProvider>
   );
 }
 
