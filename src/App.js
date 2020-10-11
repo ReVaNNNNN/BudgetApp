@@ -1,9 +1,9 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import {ThemeProvider} from "styled-components";
 import theme from "utils/theme";
 import GlobalStyles from "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import {seTranslation} from "react-i18next";
 
 import { Navigation, Wrapper, LoadingIndicator, Button } from "components";
 
